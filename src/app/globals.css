@@ -1,0 +1,149 @@
+:root {
+  --bg: #050505;
+  --panel: #0d0c0a;
+  --gold: #d4af6a;
+  --gold-light: #f3dfae;
+  --gold-deep: #8c6a2e;
+  --cream: #dbbc86f6;
+  --text: #f8e7bfd6;
+  --mute: #b5aa91;
+  --line: rgba(212, 175, 106, 0.28);
+  --gold-gradient: linear-gradient(100deg, #f3dfae, #c99b4a 55%, #8c6a2e);
+  --gold-fill: linear-gradient(135deg, #e6c786, #a8802f);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Jost", Arial, sans-serif;
+  --nav-h: 84px;
+  --gutter: clamp(20px, 6vw, 80px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font: 400 19px/1.75 var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* lumière dorée latérale, par-dessus le satin */
+.sidelight {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    linear-gradient(
+      100deg,
+      rgba(212, 175, 106, 0.16) 0%,
+      rgba(212, 175, 106, 0.05) 22%,
+      transparent 48%
+    ),
+    linear-gradient(280deg, rgba(140, 106, 46, 0.1) 0%, transparent 35%);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.1;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h1 {
+  font-size: clamp(44px, 7vw, 98px);
+}
+h2 {
+  font-size: clamp(32px, 4.5vw, 58px);
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: clamp(24px, 2.4vw, 28px);
+  margin-bottom: 10px;
+}
+
+p {
+  max-width: 58ch;
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: rgba(212, 175, 106, 0.35);
+  color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.main {
+  padding-top: var(--nav-h);
+  min-height: 80vh;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-h: 72px;
+  }
+  body {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

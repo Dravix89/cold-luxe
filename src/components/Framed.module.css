@@ -1,0 +1,26 @@
+.frame {
+  position: relative;
+  border-radius: 6px;
+  box-shadow: -20px 0 70px rgba(212, 175, 106, 0.2);
+}
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 14px -14px -14px 14px;
+  border: 1px solid rgba(212, 175, 106, 0.4);
+  border-radius: 6px;
+  z-index: -1;
+}
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 106, 0.35);
+  filter: sepia(0.3) saturate(0.8) hue-rotate(-6deg);
+}
+@media (max-width: 800px) {
+  .frame::after {
+    inset: 10px -8px -10px 10px;
+  }
+}

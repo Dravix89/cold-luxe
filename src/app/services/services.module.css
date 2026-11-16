@@ -1,0 +1,128 @@
+.page {
+  padding-top: 4vh;
+  padding-bottom: 40px;
+}
+.head {
+  margin-bottom: 36px;
+}
+.head h1 {
+  font-size: clamp(44px, 6vw, 84px);
+  margin-bottom: 14px;
+}
+.band {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 80px; /* Espace vertical entre la ligne du haut et celle du bas */
+  column-gap: 36px; /* Espace horizontal entre les 3 colonnes */
+  margin-bottom: clamp(140px, 22vh, 240px);
+}
+.card {
+  padding: 44px 32px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: linear-gradient(
+    100deg,
+    rgba(212, 175, 106, 0.17),
+    var(--panel) 55%
+  );
+  box-shadow: -10px 0 34px rgba(212, 175, 106, 0.08);
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s var(--ease);
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: -14px 0 44px rgba(212, 175, 106, 0.18);
+}
+.card p {
+  font-size: 16px;
+}
+.split {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  margin-bottom: clamp(140px, 22vh, 240px);
+}
+.steps {
+  counter-reset: s;
+  display: grid;
+  gap: 16px;
+  padding: 0;
+  margin-top: 24px;
+}
+.steps li {
+  counter-increment: s;
+  list-style: none;
+  position: relative;
+  padding: 20px 24px 20px 80px;
+  border: 1px solid rgba(212, 175, 106, 0.25);
+  border-radius: 6px;
+  background: linear-gradient(
+    100deg,
+    rgba(212, 175, 106, 0.13),
+    var(--panel) 60%
+  );
+}
+.steps li::before {
+  content: counter(s);
+  position: absolute;
+  left: 26px;
+  top: 12px;
+  font: 500 38px var(--font-display);
+  color: var(--gold);
+}
+.steps b {
+  font-weight: 400;
+  color: var(--gold);
+}
+.digital {
+  margin-bottom: clamp(140px, 22vh, 240px);
+}
+.digital > p {
+  margin-bottom: 36px;
+}
+.cta {
+  text-align: center;
+  padding: clamp(40px, 7vw, 72px) 20px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: linear-gradient(
+    100deg,
+    rgba(212, 175, 106, 0.2),
+    var(--panel) 60%
+  );
+}
+.cta p {
+  margin: 0 auto 30px;
+}
+
+@media (max-width: 1024px) {
+  .band {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 800px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .split > :first-child {
+    max-width: 420px;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .band {
+    grid-template-columns: 1fr;
+  }
+  .band .card:last-child {
+    grid-column: auto;
+  }
+  .steps li {
+    padding: 18px 18px 18px 64px;
+  }
+  .steps li::before {
+    left: 18px;
+  }
+}
